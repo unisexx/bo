@@ -43,6 +43,7 @@ $(document).ready(function(){
 <table class="tblist">
 <tr>
   <th align="left">ลำดับ</th>
+  <th align="left">ยูสเซอร์เนม</th>
   <th align="left">ชื่อ - สกุล</th>
   <th align="left">หน่วยงาน / กลุ่มงาน</th>
   <th align="left">อีเมล์</th>
@@ -60,6 +61,7 @@ $(document).ready(function(){
   ?>  
 <tr <? if($rowStyle =='')$rowStyle = 'class="odd"';else $rowStyle = "";echo $rowStyle;?>  >
   <td><?=$i;?></td>
+  <td onclick="window.location='c_user/form/<?php echo $item['id'];?><?=$url_parameter;?>'"><?=$item['username'];?> </td>
   <td onclick="window.location='c_user/form/<?php echo $item['id'];?><?=$url_parameter;?>'"><?=$item['name'];?> </td>
   <td onclick="window.location='c_user/form/<?php echo $item['id'];?><?=$url_parameter;?>'" align="center" >
 	<img src="images/department.png" width="28" height="28" class="vtip" title="<?php echo $division['title'];?> &lt;br&gt; <?php echo @$workgroup;?>" />  
