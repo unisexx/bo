@@ -257,5 +257,17 @@ class c_user extends Admin_Controller
 		$data['pagination'] = $this->users->pagination();		
 		$this->load->view('user_ajax',$data);		
 	}
+	
+	function export(){
+		if(!permission($this->modules_name,'canview'))redirect('c_front');
+		$data['url_parameter'] = GetCurrentUrlGetParameter();
+		$condition =" 1=1 ";		
+		$condition .= @$_GET['txtsearch']!='' ? " AND (USERS.USERNAME LIKE '%".$_GET['txtsearch']."%' OR USERS.NAME LIKE '%".$_GET['txtsearch']."%' OR FIRSTNAME LIKE '%".$_GET['txtsearch']."%' OR LASTNAME LIKE '%".$_GET['txtsearch']."%') ": "";
+		$condition .= @$_GET['division']!=''? $_GET['division'] > 0 ?  " AND DIVISIONID=".$_GET['division'] : "" :"";
+		$condition .= @$_GET['usertype']!=''? $_GET['usertype'] > 0 ? " AND USERTYPE =".$_GET['usertype'] : "" : "";
+		$condition .= @$_GET['workgroup']!='' ? $_GET['workgroup'] > 0 ? " AND WORKGROUPID=".$_GET['workgroup'] : "" : "";
+		$data['result']=  $this->users->where($condition)->get(false,true);	
+		$this->load->view('export',$data);
+	}
 }
 ?>

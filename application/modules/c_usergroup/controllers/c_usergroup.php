@@ -111,5 +111,13 @@ class c_usergroup extends Admin_Controller
 		redirect('c_usergroup/index'.$url_parameter);
 	}
 
+	function export(){
+		$condition = "WHERE 1=1 ";
+		$condition .= isset($_GET['txtsearch']) ? " AND TITLE LIKE '%".$_GET['txtsearch']."%' " : "";
+		$data['result']= isset($_GET['txtsearch']) ?  $this->usertype_title->get("SELECT * FROM USER_TYPE_TITLE ".$condition) :  $this->usertype_title->get(false,true);
+		$pos = strrpos($_SERVER['REQUEST_URI'],'?');
+		$data['url_parameter'] = GetCurrentUrlGetParameter();
+		$this->load->view('export',$data);	
+	}
 }
 ?>

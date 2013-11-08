@@ -87,3 +87,4 @@ $(document).ready(function(){
 <div id="paging" class="frame_page">
 <?php echo $pagination;?>
 </div>
+<div style="text-align: right;"><a href="c_user/export<?php echo $url_parameter?>">Export</a></div>
