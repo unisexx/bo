@@ -1,8 +1,32 @@
+<script type="text/javascript">
+$(document).ready(function(){
+	$("select[name=division]").change(function(){
+		var divisionid = $(this).val();
+		url = 'c_user/ajax_workgroup_list/0/'+divisionid;						
+		$("#workgroup").attr('disabled','disabled'); 
+		$("#dvWorkgroup").append("<img src='images/loading.gif' align='absmiddle'>");
+		$.get(url,function(data){			
+			$("#dvWorkgroup").html(data);
+			$("#workgroupid").attr("name","workgroup");
+			$("select[name=workgroup]").attr("id","workgroup");
+		});		
+	})
+})				
+</script>
 <h3>ตั้งค่า สิทธิ์การใช้งาน</h3>
 <form enctype="multipart/form-data" method="get" action="c_usergroup/index">
 <div id="search">
-<div id="searchBox">ชื่อสิทธิ์การใช้งาน 
+<div id="searchBox">ชื่อผู้ใช้ 
   <input name="txtsearch" type="text" size="30" value="<?php if(isset($_GET['txtsearch']))echo $_GET['txtsearch'];?>" />
+  <?  	
+  	echo form_dropdown("division",get_option("id","title","cnf_division"),@$_GET['division'],"","-- ทุกหน่วยงาน --");
+  ?> 
+  <div id="dvWorkgroup" style="display:inline;">
+  <?
+  	$condition = @$_GET['division'] > 0 ? " divisionid=".$_GET['division'] : " 1=1 "; 
+  	echo form_dropdown("workgroup",get_option("id","title","cnf_workgroup",$condition." ORDER BY title "),@$_GET['workgroup'],"","-- ทุกกลุ่มงาน --");
+  ?>
+  </div> 
   <input type="submit" name="button9" id="button9" value="ค้นหา" class="btn_search" /></div>
 </div>
 </form>
@@ -15,6 +39,12 @@
 <div id="paging" class="frame_page">
 <?php echo $pagination;?>
 </div>
+
+<?php
+	// echo "<pre>";
+	// print_r($result);
+	// echo "</pre>";
+?>
 
 <table class="tblist">
 <tr>

@@ -15,7 +15,11 @@ class c_usergroup extends Admin_Controller
 		if(!permission($this->modules_name,'canview'))redirect('c_front');
 		$condition = "WHERE 1=1 ";
 		$condition .= isset($_GET['txtsearch']) ? " AND TITLE LIKE '%".$_GET['txtsearch']."%' " : "";
-		$data['result']= isset($_GET['txtsearch']) ?  $this->usertype_title->get("SELECT * FROM USER_TYPE_TITLE ".$condition) :  $this->usertype_title->get();
+		$condition .= @$_GET['division']!=''? $_GET['division'] > 0 ?  " AND DIVISIONID=".$_GET['division'] : "" :"";
+		$condition .= @$_GET['workgroup']!='' ? $_GET['workgroup'] > 0 ? " AND WORKGROUPID=".$_GET['workgroup'] : "" : "";
+		$sql = "SELECT * FROM USERS INNER JOIN USER_TYPE_TITLE ON USERS.ID = USER_TYPE_TITLE.USER_ID ".$condition;
+		
+		$data['result'] = $this->usertype_title->get($sql);
 		$data['pagination'] = $this->usertype_title->pagination();
 		$pos = strrpos($_SERVER['REQUEST_URI'],'?');
 		$data['url_parameter'] = GetCurrentUrlGetParameter();
@@ -114,7 +118,11 @@ class c_usergroup extends Admin_Controller
 	function export(){
 		$condition = "WHERE 1=1 ";
 		$condition .= isset($_GET['txtsearch']) ? " AND TITLE LIKE '%".$_GET['txtsearch']."%' " : "";
-		$data['result']= isset($_GET['txtsearch']) ?  $this->usertype_title->get("SELECT * FROM USER_TYPE_TITLE ".$condition) :  $this->usertype_title->get(false,true);
+		$condition .= @$_GET['division']!=''? $_GET['division'] > 0 ?  " AND DIVISIONID=".$_GET['division'] : "" :"";
+		$condition .= @$_GET['workgroup']!='' ? $_GET['workgroup'] > 0 ? " AND WORKGROUPID=".$_GET['workgroup'] : "" : "";
+		$sql = "SELECT * FROM USERS INNER JOIN USER_TYPE_TITLE ON USERS.ID = USER_TYPE_TITLE.USER_ID ".$condition;
+		
+		$data['result'] = $this->usertype_title->get($sql);
 		$pos = strrpos($_SERVER['REQUEST_URI'],'?');
 		$data['url_parameter'] = GetCurrentUrlGetParameter();
 		$this->load->view('export',$data);	
