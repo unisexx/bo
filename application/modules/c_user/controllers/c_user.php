@@ -26,7 +26,7 @@ class c_user extends Admin_Controller
 		$condition .= @$_GET['division']!=''? $_GET['division'] > 0 ?  " AND DIVISIONID=".$_GET['division'] : "" :"";
 		$condition .= @$_GET['usertype']!=''? $_GET['usertype'] > 0 ? " AND USERTYPE =".$_GET['usertype'] : "" : "";
 		$condition .= @$_GET['workgroup']!='' ? $_GET['workgroup'] > 0 ? " AND WORKGROUPID=".$_GET['workgroup'] : "" : "";
-		$data['result']=  $this->users->where($condition)->get();
+		$data['result']=  $this->users->where($condition)->order_by('name','asc')->get();
 		$data['pagination'] = $this->users->pagination();		
 		$this->template->build('user_index',$data);		
 	}

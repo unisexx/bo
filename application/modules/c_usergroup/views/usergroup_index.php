@@ -19,12 +19,12 @@ $(document).ready(function(){
 <div id="searchBox">ชื่อผู้ใช้ 
   <input name="txtsearch" type="text" size="30" value="<?php if(isset($_GET['txtsearch']))echo $_GET['txtsearch'];?>" />
   <?  	
-  	echo form_dropdown("division",get_option("id","title","cnf_division"),@$_GET['division'],"","-- ทุกหน่วยงาน --");
+  	echo form_dropdown("division",get_option("id","title","cnf_division order by title asc"),@$_GET['division'],"","-- ทุกหน่วยงาน --");
   ?> 
   <div id="dvWorkgroup" style="display:inline;">
   <?
   	$condition = @$_GET['division'] > 0 ? " divisionid=".$_GET['division'] : " 1=1 "; 
-  	echo form_dropdown("workgroup",get_option("id","title","cnf_workgroup",$condition." ORDER BY title "),@$_GET['workgroup'],"","-- ทุกกลุ่มงาน --");
+  	echo form_dropdown("workgroup",get_option("id","title","cnf_workgroup",$condition." ORDER BY title asc"),@$_GET['workgroup'],"","-- ทุกกลุ่มงาน --");
   ?>
   </div> 
   <input type="submit" name="button9" id="button9" value="ค้นหา" class="btn_search" /></div>

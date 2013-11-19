@@ -20,12 +20,12 @@ $(document).ready(function(){
 ชื่อ-สกุล / อีเมล์
   <input name="txtsearch" type="text" size="30" value="<?php echo @$_GET['txtsearch'];?>" />     
   <?  	
-  	echo form_dropdown("division",get_option("id","title","cnf_division"),@$_GET['division'],"","-- ทุกหน่วยงาน --");
+  	echo form_dropdown("division",get_option("id","title","cnf_division order by title asc"),@$_GET['division'],"","-- ทุกหน่วยงาน --");
   ?> 
   <div id="dvWorkgroup" style="display:inline;">
   <?
   	$condition = @$_GET['division'] > 0 ? " divisionid=".$_GET['division'] : " 1=1 "; 
-  	echo form_dropdown("workgroup",get_option("id","title","cnf_workgroup",$condition." ORDER BY title "),@$_GET['workgroup'],"","-- ทุกกลุ่มงาน --");
+  	echo form_dropdown("workgroup",get_option("id","title","cnf_workgroup",$condition." ORDER BY title asc"),@$_GET['workgroup'],"","-- ทุกกลุ่มงาน --");
   ?>
   </div>  
 <input type="submit" name="button9" id="button9" title="ค้นหา" value=" " class="btn_search" /></div>
