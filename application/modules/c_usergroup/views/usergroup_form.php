@@ -23,6 +23,76 @@ $(document).ready(function(){
 		$().colorbox.close();
 		}
 	})	
+	
+	$('#View_1_12').change(function(){
+		if(this.checked){
+			$('.ui-state-default:eq(1)').show();
+		}else{
+			$('.ui-state-default:eq(1)').hide();
+		}
+	});
+	
+	$('#View_1_13').change(function(){
+		if(this.checked){
+			$('.ui-state-default:eq(2)').show();
+		}else{
+			$('.ui-state-default:eq(2)').hide();
+		}
+	});
+	
+	$('#View_1_14').change(function(){
+		if(this.checked){
+			$('.ui-state-default:eq(3)').show();
+		}else{
+			$('.ui-state-default:eq(3)').hide();
+		}
+	});
+	
+	$('#View_1_15').change(function(){
+		if(this.checked){
+			$('.ui-state-default:eq(4)').show();
+		}else{
+			$('.ui-state-default:eq(4)').hide();
+		}
+	});
+	
+	$('#View_1_16').change(function(){
+		if(this.checked){
+			$('.ui-state-default:eq(5)').show();
+		}else{
+			$('.ui-state-default:eq(5)').hide();
+		}
+	});
+	
+	if($('#View_1_12').is(':checked')){
+		$('.ui-state-default:eq(1)').show();
+	}else{
+		$('.ui-state-default:eq(1)').hide();
+	}
+	
+	if($('#View_1_13').is(':checked')){
+		$('.ui-state-default:eq(2)').show();
+	}else{
+		$('.ui-state-default:eq(2)').hide();
+	}
+	
+	if($('#View_1_14').is(':checked')){
+		$('.ui-state-default:eq(3)').show();
+	}else{
+		$('.ui-state-default:eq(3)').hide();
+	}
+	
+	if($('#View_1_15').is(':checked')){
+		$('.ui-state-default:eq(4)').show();
+	}else{
+		$('.ui-state-default:eq(4)').hide();
+	}
+	
+	if($('#View_1_16').is(':checked')){
+		$('.ui-state-default:eq(5)').show();
+	}else{
+		$('.ui-state-default:eq(5)').hide();
+	}
 })
 function CheckAll(pSystemID, pMenuID,pValue)
 {
