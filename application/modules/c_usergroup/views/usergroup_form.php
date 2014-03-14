@@ -93,6 +93,29 @@ $(document).ready(function(){
 	}else{
 		$('.ui-state-default:eq(5)').hide();
 	}
+	
+	$("#frmUsergroup").submit(function(){ // uncheck สิทธิ์ข้างในระบบออกทั้งหมด เมื่อไม่มีสิทธิ์ใช้งานระบบ
+		if($('#View_1_12').is(':not(:checked)')){
+			$('#tabs-2').find('input[type=checkbox]:checked').removeAttr('checked');
+		}
+		
+		if($('#View_1_13').is(':not(:checked)')){
+			$('#tabs-3').find('input[type=checkbox]:checked').removeAttr('checked');
+		}
+		
+		if($('#View_1_14').is(':not(:checked)')){
+			$('#tabs-4').find('input[type=checkbox]:checked').removeAttr('checked');
+		}
+		
+		if($('#View_1_15').is(':not(:checked)')){
+			$('#tabs-5').find('input[type=checkbox]:checked').removeAttr('checked');
+		}
+		
+		if($('#View_1_16').is(':not(:checked)')){
+			$('#tabs-6').find('input[type=checkbox]:checked').removeAttr('checked');
+		}
+	});
+
 })
 function CheckAll(pSystemID, pMenuID,pValue)
 {

@@ -16,12 +16,14 @@ $(document).ready(function(){
 		var userid = $("input[name=id]").val();
 		var fullname = $("input[name=name]").val();
 		var firstname = $("input[name=firstname]").val();
-		var lastname = $("input[name=lastname]").val();		
+		var lastname = $("input[name=lastname]").val();
+		var username = $("input[name=username]").val();
 		$.post('ajax/check_exist_user',{
 			'id':userid,
 			'fullname':fullname,
 			'firstname':firstname,
-			'lastname':lastname
+			'lastname':lastname,
+			'username':username
 		},function(data){			
 			if(data=='exist')
 			{						

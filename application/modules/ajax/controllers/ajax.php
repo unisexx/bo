@@ -163,7 +163,8 @@ class ajax extends Monitor_Controller
 		$patt_1 = $firstname.'.'.substr($lastname,0,1);
 		$patt_2 = $firstname.'.'.substr($lastname,0,2);
 		$condition = $userid > 0 ? " AND ID <> ".$userid : "";
-		$nrec = $this->user->select("count(*)")->where("name ='".trim($fullname)."'".$condition)->get_one();
+		// $nrec = $this->user->select("count(*)")->where("name ='".trim($fullname)."'".$condition)->get_one();
+		$nrec = $this->user->select("count(*)")->where("username ='".trim($_POST['username'])."'".$condition)->get_one();
 		$status = $nrec > 0 ? 'exist' : 'nexist';
 		echo $status;
 	}
