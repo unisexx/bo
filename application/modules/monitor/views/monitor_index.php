@@ -16,12 +16,16 @@
 
 
 <?php 
-if((permission('monitor_input_report', 'canview')) 
-&& (permission('monitor_questionair_report', 'canview'))){
+if(//(permission('monitor_input_report', 'canview')) 
+// && 
+(permission('monitor_questionair_report', 'canview'))){
 ?>	
 <h3 class="clear">รายงาน</h3>
 <div class="lineico">
-<?php if(permission('monitor_input_report', 'canview')): ?>	
+<?php 
+// if(permission('monitor_input_report', 'canview')): 
+if(permission('monitor_questionair_report', 'canview')):
+?>	
 	<div class="ico"><a href="monitor_operation_input_report"><img src="themes/monitor/images/icon/input_data_province.png" width="48" height="48" /><h4>รายงานการบันทึก<br>ผลการดำเนินงานและ<br>การเบิกจ่าย</h4></a></div>
 	<div class="ico"><a href="monitor_operation_withdraw_act_report"><img src="themes/monitor/images/icon/input_data_province.png" width="48" height="48" /><h4>รายงานผล<br>การปฎิบัตงาน และเบิกจ่าย (ภาพรวม)</h4></a></div>
 	<div class="ico"><a href="monitor_operation_withdraw_report"><img src="themes/monitor/images/icon/input_data_province.png" width="48" height="48" /><h4>รายงานผล<br>การปฎิบัตงาน และเบิกจ่าย (รายกิจกรรม)</h4></a></div>	

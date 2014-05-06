@@ -60,7 +60,7 @@ $(document).ready(function(){
   foreach($result as $item): ?>
 <tr <? if($rowStyle =='')$rowStyle = 'class="odd"';else $rowStyle = "";echo $rowStyle;?>  >
   <td><?php echo $i;?></td>
-  <td onclick="window.location='c_usergroup/form/<?php echo $item['id'];?><?=$url_parameter;?>'"><?php echo $item['title'];?></td>
+  <td onclick="window.location='c_usergroup/form/<?php echo $item['id'];?><?=$url_parameter;?>'"><?php echo $item['name'];?></td>
   <td>
 	<?php echo ShowUserTypeSystem($item['id']);?>
   </td>
